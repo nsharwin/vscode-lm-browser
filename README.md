@@ -1,5 +1,7 @@
 # 🌐 WebContext AI
 
+> **🎯 Primary Intent:** This repository serves as an educational showcase and demonstration of how to leverage the **[VS Code Language Model API](https://code.visualstudio.com/api/extension-guides/language-model)** (`vscode.lm`) from within a custom web interface (both VS Code Webviews and isolated external browsers).
+
 A VS Code extension that lets you **fetch any web page** and **ask AI-powered questions** about its content — all from within a beautiful browser-like panel.
 
 ## Features
