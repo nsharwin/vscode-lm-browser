@@ -1,0 +1,71 @@
+{
+  "name": "webcontext-ai",
+  "displayName": "WebContext AI",
+  "description": "A browser-like webview that fetches web pages and uses the VS Code Language Model API to run AI prompts against the content.",
+  "version": "0.1.0",
+  "publisher": "sharwin",
+  "engines": {
+    "vscode": "^1.93.0"
+  },
+  "categories": [
+    "AI",
+    "Other"
+  ],
+  "keywords": [
+    "ai",
+    "language model",
+    "browser",
+    "copilot",
+    "web",
+    "prompt"
+  ],
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "main": "./dist/extension.js",
+  "icon": "media/icon.png",
+  "contributes": {
+    "commands": [
+      {
+        "command": "webcontext.open",
+        "title": "WebContext AI: Open Panel",
+        "icon": "$(globe)"
+      },
+      {
+        "command": "webcontext.openInBrowser",
+        "title": "WebContext AI: Open in Browser",
+        "icon": "$(link-external)"
+      }
+    ],
+    "keybindings": [
+      {
+        "command": "webcontext.open",
+        "key": "ctrl+shift+b",
+        "mac": "cmd+shift+b"
+      },
+      {
+        "command": "webcontext.openInBrowser",
+        "key": "ctrl+shift+alt+b",
+        "mac": "cmd+shift+alt+b"
+      }
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "node esbuild.js --production",
+    "watch": "node esbuild.js --watch",
+    "lint": "eslint src --ext ts"
+  },
+  "devDependencies": {
+    "@types/dompurify": "^3.0.5",
+    "@types/marked": "^5.0.2",
+    "@types/node": "^20.11.0",
+    "@types/vscode": "^1.93.0",
+    "esbuild": "^0.20.0",
+    "typescript": "^5.3.0"
+  },
+  "dependencies": {
+    "dompurify": "^3.0.8",
+    "marked": "^18.0.0"
+  }
+}
