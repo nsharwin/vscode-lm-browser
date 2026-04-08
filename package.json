@@ -3,7 +3,7 @@
   "displayName": "WebContext AI",
   "description": "A browser-like webview that fetches web pages and uses the VS Code Language Model API to run AI prompts against the content.",
   "version": "0.1.0",
-  "publisher": "sharwin",
+  "publisher": "sipy",
   "engines": {
     "vscode": "^1.93.0"
   },
