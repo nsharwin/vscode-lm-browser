@@ -5,11 +5,13 @@ A VS Code extension that lets you **fetch any web page** and **ask AI-powered qu
 ## Features
 
 - **🔗 URL Fetching** — Paste any URL and the extension fetches the page content
+- **📑 Multi-Tab Context** — Load multiple pages simultaneously to perform powerful cross-document analysis
 - **🤖 AI Analysis** — Uses VS Code's Language Model API (Copilot) to analyze web content
-- **💬 Chat Interface** — Ask follow-up questions with preserved conversation history
-- **⚡ Preset Prompts** — One-click actions: Summarize, Extract Data, Explain, Takeaways
-- **📊 Streaming Responses** — Real-time streaming of AI responses with markdown rendering
-- **🎨 Theme-Aware** — Adapts to your VS Code dark/light theme
+- **💬 Shared Chat Interface** — Ask questions across all loaded pages; conversation history is preserved
+- **🌐 Dual-Mode UI** — Works as an integrated VS Code Webview panel AND as a standalone localhost web server
+- **⚡ Preset Prompts** — One-click actions: Summarize, Compare Pages, Extract Data, Explain, Takeaways
+- **📊 Real-time Streaming** — Live streaming of AI responses with fast markdown rendering
+- **🎨 Theme-Aware** — Adapts to your VS Code dark/light theme (Webview mode)
 
 ## Requirements
 
@@ -18,33 +20,35 @@ A VS Code extension that lets you **fetch any web page** and **ask AI-powered qu
 
 ## Usage
 
-1. The extension opens automatically when VS Code starts
-2. Enter a URL in the address bar and press Enter (or click the ▶ button)
-3. Once the page is fetched, type a question or click a preset prompt
-4. The AI analyzes the page content and streams back the response
-5. Ask follow-up questions — conversation history is preserved
+1. Enter a URL in the address bar and press Enter (or click the ▶ button)
+2. Use the **"+" (Add Tab)** button to fetch additional pages to build your context
+3. Switch between tabs to see metadata/headings for individual pages
+4. Type an analytical question or click a preset prompt
+5. The AI analyzes *all* loaded pages together and streams back exactly what you need
+6. Continue asking follow-up questions — conversation history is preserved across the session
 
 ## Keybindings
 | Command | Mac | Description |
 |---|---|---|
-| `WebContext AI: Open Panel` | `Cmd+Shift+B` | Opens the WebContext panel |
+| `WebContext AI: Open Panel` | `Cmd+Shift+B` | Opens the WebContext panel within VS Code |
+| `WebContext AI: Open in Browser` | - | Starts a local server and opens your OS browser |
 
 ### Preset Prompts
 
 | Preset | What it does |
 |--------|-------------|
-| 📋 Summarize | Key points in bullet format |
+| 📋 Summarize | Key points in bullet format (handles multiple pages) |
+| ⚖️ Compare Pages | Analyzes key similarities and differences |
 | 📊 Extract Data | Structured data, facts, and figures |
 | 💡 Explain | Simple explanation of main concepts |
-| 🔗 Links | Lists all references and resources |
 | 🎯 Takeaways | Key takeaways and action items |
 
 ## How it Works
 
-1. **Fetch** — The extension downloads the HTML from the given URL
-2. **Parse** — HTML is converted to clean text, metadata is extracted
-3. **Prompt** — Your question + page content is sent to the Copilot language model via `vscode.lm` API
-4. **Stream** — The AI response is streamed back in real-time with markdown rendering
+1. **Fetch** — Downloads HTML from all provided URLs
+2. **Parse** — Extracts metadata, cleans HTML into text, and truncates if necessary
+3. **Prompt** — Organizes all pages into a unified context + appends your question. Sent to Copilot via `vscode.lm`
+4. **Stream** — Relays the AI response via IPC (Webview mode) or Server-Sent Events (Browser mode)
 
 ## Development
 
